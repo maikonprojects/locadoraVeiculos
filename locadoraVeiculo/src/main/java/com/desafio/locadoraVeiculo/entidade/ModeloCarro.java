@@ -11,6 +11,9 @@ public class ModeloCarro {
 
     private String descricao;
 
+    @Enumerated(EnumType.STRING)
+    private Categoria categoria;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idFabricante")
     private Fabricante fabricante;
@@ -18,8 +21,11 @@ public class ModeloCarro {
     public ModeloCarro() {
     }
 
-    public ModeloCarro(String descricao) {
+
+    public ModeloCarro(String descricao, Categoria categoria, Fabricante fabricante) {
         this.descricao = descricao;
+        this.categoria = categoria;
+        this.fabricante = fabricante;
     }
 
     public Long getId() {
@@ -36,5 +42,21 @@ public class ModeloCarro {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public Fabricante getFabricante() {
+        return fabricante;
+    }
+
+    public void setFabricante(Fabricante fabricante) {
+        this.fabricante = fabricante;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }

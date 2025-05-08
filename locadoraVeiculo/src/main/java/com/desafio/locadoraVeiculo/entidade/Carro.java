@@ -28,8 +28,8 @@ public class Carro {
     @ManyToMany
     @JoinTable(
             name = "carro_acessorio",
-            joinColumns = @JoinColumn(name = "carro_id"),
-            inverseJoinColumns = @JoinColumn(name = "acessorio_id")
+            joinColumns = @JoinColumn(name = "id_carro"),
+            inverseJoinColumns = @JoinColumn(name = "id_acessorio")
     )
     private List<Acessorio> acessorio;
 
@@ -92,5 +92,13 @@ public class Carro {
 
     public void setAcessorio(List<Acessorio> acessorio) {
         this.acessorio = acessorio;
+    }
+
+    public ModeloCarro getModeloCarro() {
+        return modeloCarro;
+    }
+
+    public void setModeloCarro(ModeloCarro modeloCarro) {
+        this.modeloCarro = modeloCarro;
     }
 }
