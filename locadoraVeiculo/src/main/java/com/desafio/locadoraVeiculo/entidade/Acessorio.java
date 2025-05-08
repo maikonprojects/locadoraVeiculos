@@ -1,9 +1,8 @@
 package com.desafio.locadoraVeiculo.entidade;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Acessorio {
@@ -11,6 +10,9 @@ public class Acessorio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToMany(mappedBy = "acessorio")
+    private List<Carro> carros;
 
     private String descricao;
 

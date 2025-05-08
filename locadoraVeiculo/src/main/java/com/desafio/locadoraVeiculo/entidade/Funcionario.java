@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
+@DiscriminatorValue("funcionario")
 public class Funcionario extends Pessoa {
 
     @Id

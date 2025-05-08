@@ -25,12 +25,12 @@ public class Carro {
     private ModeloCarro modeloCarro;
 
 
-    @ManyToOne
+    @ManyToMany
     @JoinTable(
             name = "carro_acessorio",
             joinColumns = @JoinColumn(name = "carro_id"),
             inverseJoinColumns = @JoinColumn(name = "acessorio_id")
-            )
+    )
     private List<Acessorio> acessorio;
 
 
