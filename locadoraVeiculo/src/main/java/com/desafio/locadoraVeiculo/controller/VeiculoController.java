@@ -1,5 +1,6 @@
 package com.desafio.locadoraVeiculo.controller;
 
+import com.desafio.locadoraVeiculo.dto.DadosAluguel;
 import com.desafio.locadoraVeiculo.dto.DadosDisponivelData;
 import com.desafio.locadoraVeiculo.dto.DadosVeiculo;
 import com.desafio.locadoraVeiculo.entidade.Acessorio;
@@ -56,6 +57,12 @@ public class VeiculoController {
         return ResponseEntity.status(200).body(service.listarDisponivel(dados.dataInicio(), dados.dataFim()));
 
     }
+
+//    @PostMapping("/aluguel")
+//    public ResponseEntity<DadosAluguel> criarAluguel(@RequestBody DadosAluguel dadosAluguel ){
+//        return ResponseEntity.status(200).body()
+//
+//    }
 
 
 
