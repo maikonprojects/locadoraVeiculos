@@ -42,5 +42,13 @@ public class VeiculoController {
     }
 
 
+    @GetMapping("/{id}")
+    public ResponseEntity<DadosVeiculo> listarVeiculoPorId(@PathVariable Long id) throws Exception {
+        return ResponseEntity.status(200).body(service.listarVeiculoPorId(id));
+    }
+
+
+
+
 }
 

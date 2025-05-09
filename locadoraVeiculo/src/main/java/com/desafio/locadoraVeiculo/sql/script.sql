@@ -118,3 +118,5 @@ CREATE TABLE aluguel (
     FOREIGN KEY (id_carro) REFERENCES carro(id),
     FOREIGN KEY (id_apolice) REFERENCES apolice_seguro(id)
 );
+
+

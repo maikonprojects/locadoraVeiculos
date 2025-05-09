@@ -20,4 +20,7 @@ public interface VeiculoRepository extends JpaRepository<Carro, Long> {
     List<Carro> listarPorAcessorio(String acessorio);
 
 
+
+
+
 }

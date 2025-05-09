@@ -34,16 +34,21 @@ public class Carro {
     private List<Acessorio> acessorio;
 
 
+    private Boolean disponivel;
+
+
     public Carro() {
     }
 
 
-    public Carro(String placa, String chassi, String cor, BigDecimal valorDiaria, List<Acessorio> acessorio) {
+    public Carro(String placa, String chassi, String cor, BigDecimal valorDiaria, ModeloCarro modeloCarro, List<Acessorio> acessorio, Boolean disponivel) {
         this.placa = placa;
         this.chassi = chassi;
         this.cor = cor;
         this.valorDiaria = valorDiaria;
+        this.modeloCarro = modeloCarro;
         this.acessorio = acessorio;
+        this.disponivel = disponivel;
     }
 
     public Long getId() {
@@ -100,5 +105,13 @@ public class Carro {
 
     public void setModeloCarro(ModeloCarro modeloCarro) {
         this.modeloCarro = modeloCarro;
+    }
+
+    public Boolean getDisponivel() {
+        return disponivel;
+    }
+
+    public void setDisponivel(Boolean disponivel) {
+        this.disponivel = disponivel;
     }
 }

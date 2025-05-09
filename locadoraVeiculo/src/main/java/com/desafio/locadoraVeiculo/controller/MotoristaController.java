@@ -1,6 +1,7 @@
 package com.desafio.locadoraVeiculo.controller;
 
 import com.desafio.locadoraVeiculo.dto.DadosMotorista;
+import com.desafio.locadoraVeiculo.exception.EmailDuplicadoException;
 import com.desafio.locadoraVeiculo.service.MotoristaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,7 @@ public class MotoristaController {
     MotoristaService service;
 
     @PostMapping
-    public ResponseEntity<DadosMotorista> post(@RequestBody DadosMotorista dados){
+    public ResponseEntity<DadosMotorista> post(@RequestBody DadosMotorista dados) throws EmailDuplicadoException {
         return ResponseEntity.status(201).body(service.cadastrar(dados));
     }
 
