@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -19,7 +21,16 @@ public interface VeiculoRepository extends JpaRepository<Carro, Long> {
     @Query("SELECT c FROM Carro c JOIN c.acessorio m WHERE m.descricao = :acessorio")
     List<Carro> listarPorAcessorio(String acessorio);
 
-
+    @Query("""
+    SELECT c FROM Carro c
+    WHERE NOT EXISTS (
+        SELECT 1 FROM Aluguel a
+        WHERE a.carro.id = c.id
+          AND a.dataEntrega <= :dataFim
+          AND a.dataDevolucao >= :dataInicio
+    )
+""")
+    List<Carro> buscarCarrosDisponiveis(Date dataInicio, Date dataFim);
 
 
 

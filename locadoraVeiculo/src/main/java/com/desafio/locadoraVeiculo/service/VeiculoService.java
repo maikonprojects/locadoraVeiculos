@@ -9,6 +9,8 @@ import com.desafio.locadoraVeiculo.repository.VeiculoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -30,6 +32,7 @@ public class VeiculoService {
                         carro.getCor(),
                         carro.getValorDiaria(),
                         carro.getModeloCarro().getCategoria(),
+                        carro.getDisponivel(),
                         carro.getAcessorio()
                 )).collect(Collectors.toList());
 
@@ -46,6 +49,7 @@ public class VeiculoService {
                         carro.getCor(),
                         carro.getValorDiaria(),
                         carro.getModeloCarro().getCategoria(),
+                        carro.getDisponivel(),
                         carro.getAcessorio()
                 )).collect(Collectors.toList());
 
@@ -61,6 +65,7 @@ public class VeiculoService {
                         carro.getCor(),
                         carro.getValorDiaria(),
                         carro.getModeloCarro().getCategoria(),
+                        carro.getDisponivel(),
                         carro.getAcessorio()
                 )).collect(Collectors.toList());
 
@@ -77,6 +82,7 @@ public class VeiculoService {
                     carroListado.get().getCor(),
                     carroListado.get().getValorDiaria(),
                     carroListado.get().getModeloCarro().getCategoria(),
+                    carroListado.get().getDisponivel(),
                     carroListado.get().getAcessorio()
             );
         }else {
@@ -86,6 +92,25 @@ public class VeiculoService {
 
 
     }
+
+    public List<DadosVeiculo> listarDisponivel(Date dataInicio, Date dataFim){
+        List<Carro> listar = repository.buscarCarrosDisponiveis(dataInicio,dataFim);
+
+        return listar.stream()
+                .map(carro -> new  DadosVeiculo(
+                        carro.getPlaca(),
+                        carro.getChassi(),
+                        carro.getCor(),
+                        carro.getValorDiaria(),
+                        carro.getModeloCarro().getCategoria(),
+                        carro.getDisponivel(),
+                        carro.getAcessorio()
+                )).collect(Collectors.toList());
+
+
+    }
+
+
 
 
 

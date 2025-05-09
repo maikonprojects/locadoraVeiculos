@@ -1,13 +1,17 @@
 package com.desafio.locadoraVeiculo.controller;
 
+import com.desafio.locadoraVeiculo.dto.DadosDisponivelData;
 import com.desafio.locadoraVeiculo.dto.DadosVeiculo;
 import com.desafio.locadoraVeiculo.entidade.Acessorio;
 import com.desafio.locadoraVeiculo.entidade.Categoria;
+import com.desafio.locadoraVeiculo.exception.VeiculoNaoEncontradoException;
 import com.desafio.locadoraVeiculo.service.VeiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.crypto.Data;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -43,9 +47,16 @@ public class VeiculoController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<DadosVeiculo> listarVeiculoPorId(@PathVariable Long id) throws Exception {
+    public ResponseEntity<DadosVeiculo> listarVeiculoPorId(@PathVariable Long id) throws VeiculoNaoEncontradoException {
         return ResponseEntity.status(200).body(service.listarVeiculoPorId(id));
     }
+
+    @GetMapping("/disponivel")
+    public ResponseEntity<List<DadosVeiculo>> listarVeiculoDisponivel(@RequestBody DadosDisponivelData dados){
+        return ResponseEntity.status(200).body(service.listarDisponivel(dados.dataInicio(), dados.dataFim()));
+
+    }
+
 
 
 
