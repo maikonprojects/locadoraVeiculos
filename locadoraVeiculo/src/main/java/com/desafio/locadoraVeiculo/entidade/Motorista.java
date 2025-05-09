@@ -3,6 +3,8 @@ package com.desafio.locadoraVeiculo.entidade;
 import com.desafio.locadoraVeiculo.dto.DadosMotorista;
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
 @DiscriminatorValue("motorista")
 public class Motorista extends Pessoa{
@@ -20,10 +22,11 @@ public class Motorista extends Pessoa{
         this.numeroCnh = numeroCNH;
     }
 
-    public Motorista(DadosMotorista dados) {
-        super(dados.dataNascimento(), dados.nome(), dados.cpf());
-        this.numeroCnh = dados.cnh();
+    public Motorista(DadosMotorista dadosMotorista) {
+        super(dadosMotorista.nome(), dadosMotorista.dataNascimento(), dadosMotorista.cpf(), dadosMotorista.email());
+        this.numeroCnh = dadosMotorista.cnh();
     }
+
 
     public Long getId() {
         return id;

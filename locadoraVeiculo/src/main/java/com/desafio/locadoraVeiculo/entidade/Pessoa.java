@@ -20,13 +20,17 @@ public class Pessoa {
 
     private String cpf;
 
+    private String email;
+
     public Pessoa() {
     }
 
-    public Pessoa(Date dataNascimento, String nome, String cpf) {
-        this.dataNascimento = dataNascimento;
+
+    public Pessoa(String nome, Date dataNascimento, String cpf, String email) {
         this.nome = nome;
+        this.dataNascimento = dataNascimento;
         this.cpf = cpf;
+        this.email = email;
     }
 
     public Long getId() {
@@ -59,5 +63,13 @@ public class Pessoa {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

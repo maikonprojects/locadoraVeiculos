@@ -15,7 +15,7 @@ public class MotoristaService {
     public DadosMotorista cadastrar(DadosMotorista dados){
         Motorista motorista = new Motorista(dados);
         Motorista motoristaSalvo = repository.save(motorista);
-        DadosMotorista dadosRetorno = new DadosMotorista(motoristaSalvo.getNome(), motoristaSalvo.getDataNascimento(), motoristaSalvo.getCpf(), motoristaSalvo.getNumeroCNH());
+        DadosMotorista dadosRetorno = new DadosMotorista(motoristaSalvo.getNome(), motoristaSalvo.getDataNascimento(), motoristaSalvo.getCpf(), motoristaSalvo.getNumeroCNH(), motoristaSalvo.getEmail());
         return dadosRetorno;
     }
 

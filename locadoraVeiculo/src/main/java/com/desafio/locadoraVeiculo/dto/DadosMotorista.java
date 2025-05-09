@@ -6,5 +6,6 @@ public record DadosMotorista(
    String nome,
    Date dataNascimento,
    String cpf,
-   String cnh
+   String cnh,
+   String email
 ) {}
