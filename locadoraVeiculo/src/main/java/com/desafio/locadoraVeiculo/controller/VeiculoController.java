@@ -23,12 +23,6 @@ public class VeiculoController {
     VeiculoService service;
 
 
-//
-//    @GetMapping("/{categoria}/{acessorio}")
-//    public ResponseEntity<List<DadosVeiculo>> veiculoDisponivel(@PathVariable Categoria categoria, @PathVariable String acessorio){
-//        service.
-//    }
-
     @GetMapping
     public ResponseEntity<List<DadosVeiculo>> veiculoDisponivel() {
         return ResponseEntity.status(200).body(service.listar());

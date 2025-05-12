@@ -20,7 +20,7 @@ public class Carro {
 
     private BigDecimal valorDiaria;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idModelo")
     private ModeloCarro modeloCarro;
 

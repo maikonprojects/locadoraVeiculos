@@ -33,5 +33,13 @@ public interface VeiculoRepository extends JpaRepository<Carro, Long> {
     List<Carro> buscarCarrosDisponiveis(Date dataInicio, Date dataFim);
 
 
+    @Query("""
+    SELECT c FROM Carro c
+    JOIN FETCH c.modeloCarro mc
+    JOIN FETCH mc.fabricante f
+    LEFT JOIN FETCH c.acessorio a
+""")
+    List<Carro> findAllComTudo();
+
 
 }

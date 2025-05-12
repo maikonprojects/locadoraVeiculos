@@ -14,7 +14,7 @@ public class ModeloCarro {
     @Enumerated(EnumType.STRING)
     private Categoria categoria;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idFabricante")
     private Fabricante fabricante;
 
