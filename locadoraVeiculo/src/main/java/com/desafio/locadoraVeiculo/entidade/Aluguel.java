@@ -14,6 +14,7 @@ public class Aluguel {
     private Long id;
 
 
+    @Temporal(TemporalType.TIMESTAMP)
     private Calendar dataPedido;
 
 

@@ -2,6 +2,9 @@ package com.desafio.locadoraVeiculo.controller;
 
 import com.desafio.locadoraVeiculo.dto.DadosAluguel;
 import com.desafio.locadoraVeiculo.entidade.Aluguel;
+import com.desafio.locadoraVeiculo.exception.ContratoApoliceException;
+import com.desafio.locadoraVeiculo.exception.DisponibilidadeMotoristaException;
+import com.desafio.locadoraVeiculo.exception.DisponibilidadePorDataException;
 import com.desafio.locadoraVeiculo.service.AluguelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,9 +21,11 @@ public class AluguelController {
     @Autowired
     AluguelService service;
 
-    @PostMapping("{data}")
-    public ResponseEntity<Aluguel> listarData(@RequestBody DadosAluguel dados){
-        return ResponseEntity.status(201).body()
+    @PostMapping
+    public ResponseEntity<DadosAluguel> listarData(@RequestBody DadosAluguel dados) throws DisponibilidadePorDataException, ContratoApoliceException, DisponibilidadeMotoristaException {
+        return ResponseEntity.status(201).body(service.alugarPorData(dados));
 
     }
+
+
 }

@@ -22,6 +22,27 @@ public class GlobalExceptionHandler {
                 .body(e.getMessage());
     }
 
+    @ExceptionHandler(DisponibilidadePorDataException.class)
+    public ResponseEntity<String> handleDispinivel(DisponibilidadePorDataException e){
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(e.getMessage());
+    }
+
+    @ExceptionHandler(ContratoApoliceException.class)
+    public ResponseEntity<String> handleApolice(ContratoApoliceException e){
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(e.getMessage());
+    }
+
+    @ExceptionHandler(DisponibilidadeMotoristaException.class)
+    public ResponseEntity<String> handleMotorista(DisponibilidadeMotoristaException e){
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(e.getMessage());
+    }
+
 
 
 }
