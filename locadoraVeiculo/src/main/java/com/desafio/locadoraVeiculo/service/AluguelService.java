@@ -8,6 +8,7 @@ import com.desafio.locadoraVeiculo.entidade.StatusPagamento;
 import com.desafio.locadoraVeiculo.exception.*;
 import com.desafio.locadoraVeiculo.mapper.AluguelMapperStruct;
 import com.desafio.locadoraVeiculo.repository.AluguelRepository;
+import com.desafio.locadoraVeiculo.repository.MotoristaRepository;
 import com.desafio.locadoraVeiculo.repository.VeiculoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,9 @@ public class AluguelService {
 
     @Autowired
     private VeiculoRepository veiculoRepository;
+
+    @Autowired
+    private MotoristaRepository motoristaRepository;
 
 
     public DadosAluguel alugarPorData(DadosAluguel dados) throws DisponibilidadePorDataException, ContratoApoliceException, DisponibilidadeMotoristaException {
@@ -120,6 +124,20 @@ public class AluguelService {
         return aluguelMapperStruct.toAluguelDto(aluguelSalvo);
 
 
+    }
+
+    public List<DadosAluguel> listarCliente(Long id) throws MotoristaNaoEncontradoException {
+        List<Aluguel> listandoPorCliente = repository.listandoAluguelPorCliente(id);
+
+        Boolean existePorId = motoristaRepository.existsById(id);
+
+        if (existePorId == false){
+            throw new MotoristaNaoEncontradoException("Motorista não foi encontrado");
+        }
+
+        return listandoPorCliente.stream()
+                .map(aluguelMapperStruct::toAluguelDto)
+                .collect(Collectors.toList());
     }
 
 
