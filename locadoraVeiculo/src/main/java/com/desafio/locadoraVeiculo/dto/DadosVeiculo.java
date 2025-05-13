@@ -5,7 +5,7 @@ import com.desafio.locadoraVeiculo.entidade.*;
 import java.math.BigDecimal;
 import java.util.List;
 
-public record DadosVeiculo(String placa, String chassi, String cor, BigDecimal valorDiaria, ModeloCarro modeloCarro, boolean disponivel, List<Acessorio> acessorio) {
+public record DadosVeiculo(String placa, String chassi, String cor, BigDecimal valorDiaria, ModeloCarro modeloCarro, List<Acessorio> acessorio) {
 
 
     public DadosVeiculo(Carro veiculo) {
@@ -15,7 +15,6 @@ public record DadosVeiculo(String placa, String chassi, String cor, BigDecimal v
                 veiculo.getCor(),
                 veiculo.getValorDiaria(),
                 veiculo.getModeloCarro(),
-                veiculo.getDisponivel(),
                 veiculo.getAcessorio()
         );
     }

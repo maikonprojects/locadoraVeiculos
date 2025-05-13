@@ -21,11 +21,20 @@ public class AluguelController {
     @Autowired
     AluguelService service;
 
-    @PostMapping
-    public ResponseEntity<DadosAluguel> listarData(@RequestBody DadosAluguel dados) throws DisponibilidadePorDataException, ContratoApoliceException, DisponibilidadeMotoristaException {
+    @PostMapping("/carrinho")
+    public ResponseEntity<DadosAluguel> alugar(@RequestBody DadosAluguel dados) throws DisponibilidadePorDataException, ContratoApoliceException, DisponibilidadeMotoristaException {
         return ResponseEntity.status(201).body(service.alugarPorData(dados));
 
     }
+
+    @GetMapping("/pessoa/{id}")
+    public ResponseEntity<List<DadosAluguel>> listarCarrinhoPorCliente(@PathVariable Long id) {
+        return ResponseEntity.status(200).body(service.listar(id));
+    }
+
+
+
+
 
 
 }

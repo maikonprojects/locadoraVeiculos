@@ -33,4 +33,9 @@ public interface AluguelRepository extends JpaRepository<Aluguel, Long> {
     @Query("SELECT c FROM Motorista c WHERE c.id = :idMotorista")
     Motorista buscarMotorista(Long idMotorista);
 
+
+    @Query("SELECT a FROM Aluguel a WHERE a.motorista.id = :id AND a.carrinho = true")
+    List<Aluguel> listandoPorCliente(Long id);
+
+
 }

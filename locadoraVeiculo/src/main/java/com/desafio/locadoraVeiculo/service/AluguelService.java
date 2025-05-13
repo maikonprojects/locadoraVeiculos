@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AluguelService {
@@ -54,6 +55,16 @@ public class AluguelService {
         Aluguel aluguelNovo = repository.save(aluguel);
         return aluguelMapperStruct.toAluguelDto(aluguelNovo);
     }
+
+    public List<DadosAluguel> listar(Long id){
+       List<Aluguel> aluguel = repository.listandoPorCliente(id);
+        return aluguel.stream()
+                .map(aluguelMapperStruct::toAluguelDto)
+                .collect(Collectors.toList());
+    }
+
+
+
 
 
 }

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-05-12T13:25:43-0300",
+    date = "2025-05-13T11:29:42-0300",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 24 (Oracle Corporation)"
 )
 @Component
@@ -35,7 +35,6 @@ public class VeiculoMapperStructImpl implements VeiculoMapperStruct {
             carro.setAcessorio( new ArrayList<Acessorio>( list ) );
         }
         carro.setModeloCarro( dto.modeloCarro() );
-        carro.setDisponivel( dto.disponivel() );
 
         return carro;
     }
@@ -51,7 +50,6 @@ public class VeiculoMapperStructImpl implements VeiculoMapperStruct {
         String cor = null;
         BigDecimal valorDiaria = null;
         ModeloCarro modeloCarro = null;
-        boolean disponivel = false;
         List<Acessorio> acessorio = null;
 
         placa = entity.getPlaca();
@@ -59,15 +57,12 @@ public class VeiculoMapperStructImpl implements VeiculoMapperStruct {
         cor = entity.getCor();
         valorDiaria = entity.getValorDiaria();
         modeloCarro = entity.getModeloCarro();
-        if ( entity.getDisponivel() != null ) {
-            disponivel = entity.getDisponivel();
-        }
         List<Acessorio> list = entity.getAcessorio();
         if ( list != null ) {
             acessorio = new ArrayList<Acessorio>( list );
         }
 
-        DadosVeiculo dadosVeiculo = new DadosVeiculo( placa, chassi, cor, valorDiaria, modeloCarro, disponivel, acessorio );
+        DadosVeiculo dadosVeiculo = new DadosVeiculo( placa, chassi, cor, valorDiaria, modeloCarro, acessorio );
 
         return dadosVeiculo;
     }
@@ -83,7 +78,6 @@ public class VeiculoMapperStructImpl implements VeiculoMapperStruct {
         String cor = null;
         BigDecimal valorDiaria = null;
         ModeloCarro modeloCarro = null;
-        boolean disponivel = false;
         List<Acessorio> acessorio = null;
 
         placa = entity.getPlaca();
@@ -91,15 +85,12 @@ public class VeiculoMapperStructImpl implements VeiculoMapperStruct {
         cor = entity.getCor();
         valorDiaria = entity.getValorDiaria();
         modeloCarro = entity.getModeloCarro();
-        if ( entity.getDisponivel() != null ) {
-            disponivel = entity.getDisponivel();
-        }
         List<Acessorio> list = entity.getAcessorio();
         if ( list != null ) {
             acessorio = new ArrayList<Acessorio>( list );
         }
 
-        DadosVeiculo dadosVeiculo = new DadosVeiculo( placa, chassi, cor, valorDiaria, modeloCarro, disponivel, acessorio );
+        DadosVeiculo dadosVeiculo = new DadosVeiculo( placa, chassi, cor, valorDiaria, modeloCarro, acessorio );
 
         return dadosVeiculo;
     }

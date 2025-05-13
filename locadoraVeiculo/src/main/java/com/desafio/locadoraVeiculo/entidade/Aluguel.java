@@ -18,6 +18,7 @@ public class Aluguel {
     private Calendar dataPedido;
 
 
+
     private Date dataEntrega;
 
 
@@ -26,11 +27,11 @@ public class Aluguel {
 
     private BigDecimal valorTotal;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idMotorista",nullable = false)
     private Motorista motorista;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idCarro",nullable = false)
     private Carro carro;
 
@@ -39,10 +40,19 @@ public class Aluguel {
     private ApoliceSeguro apoliceSeguro;
 
 
+    private boolean carrinho = true;
+
+    @Enumerated(EnumType.STRING)
+    private TipoPagamento tipoPagamento;
+
+    @Enumerated(EnumType.STRING)
+    private StatusPagamento statusPagamento;
+
+
     public Aluguel() {
     }
 
-    public Aluguel(Calendar dataPedido, Date dataEntrega, Date dataDevolucao, BigDecimal valorTotal, Motorista motorista, Carro carro, ApoliceSeguro apoliceSeguro) {
+    public Aluguel(Calendar dataPedido, Date dataEntrega, Date dataDevolucao, BigDecimal valorTotal, Motorista motorista, Carro carro, ApoliceSeguro apoliceSeguro, boolean carrinho, TipoPagamento tipoPagamento, StatusPagamento statusPagamento) {
         this.dataPedido = dataPedido;
         this.dataEntrega = dataEntrega;
         this.dataDevolucao = dataDevolucao;
@@ -50,6 +60,9 @@ public class Aluguel {
         this.motorista = motorista;
         this.carro = carro;
         this.apoliceSeguro = apoliceSeguro;
+        this.carrinho = carrinho;
+        this.tipoPagamento = tipoPagamento;
+        this.statusPagamento = statusPagamento;
     }
 
     public Long getId() {
@@ -114,5 +127,29 @@ public class Aluguel {
 
     public void setApoliceSeguro(ApoliceSeguro apoliceSeguro) {
         this.apoliceSeguro = apoliceSeguro;
+    }
+
+    public boolean isCarrinho() {
+        return carrinho;
+    }
+
+    public void setCarrinho(boolean carrinho) {
+        this.carrinho = carrinho;
+    }
+
+    public TipoPagamento getTipoPagamento() {
+        return tipoPagamento;
+    }
+
+    public void setTipoPagamento(TipoPagamento tipoPagamento) {
+        this.tipoPagamento = tipoPagamento;
+    }
+
+    public StatusPagamento getStatusPagamento() {
+        return statusPagamento;
+    }
+
+    public void setStatusPagamento(StatusPagamento statusPagamento) {
+        this.statusPagamento = statusPagamento;
     }
 }

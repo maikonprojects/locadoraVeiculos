@@ -5,6 +5,8 @@ import com.desafio.locadoraVeiculo.entidade.Aluguel;
 import com.desafio.locadoraVeiculo.entidade.ApoliceSeguro;
 import com.desafio.locadoraVeiculo.entidade.Carro;
 import com.desafio.locadoraVeiculo.entidade.Motorista;
+import com.desafio.locadoraVeiculo.entidade.StatusPagamento;
+import com.desafio.locadoraVeiculo.entidade.TipoPagamento;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
@@ -13,7 +15,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-05-12T15:08:32-0300",
+    date = "2025-05-13T11:29:42-0300",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 24 (Oracle Corporation)"
 )
 @Component
@@ -34,6 +36,9 @@ public class AluguelMapperStructImpl implements AluguelMapperStruct {
         aluguel.setMotorista( dto.motorista() );
         aluguel.setCarro( dto.carro() );
         aluguel.setApoliceSeguro( dto.apoliceSeguro() );
+        aluguel.setCarrinho( dto.carrinho() );
+        aluguel.setTipoPagamento( dto.tipoPagamento() );
+        aluguel.setStatusPagamento( dto.statusPagamento() );
 
         return aluguel;
     }
@@ -51,6 +56,9 @@ public class AluguelMapperStructImpl implements AluguelMapperStruct {
         Motorista motorista = null;
         Carro carro = null;
         ApoliceSeguro apoliceSeguro = null;
+        boolean carrinho = false;
+        TipoPagamento tipoPagamento = null;
+        StatusPagamento statusPagamento = null;
 
         dataPedido = entity.getDataPedido();
         dataEntrega = entity.getDataEntrega();
@@ -59,8 +67,11 @@ public class AluguelMapperStructImpl implements AluguelMapperStruct {
         motorista = entity.getMotorista();
         carro = entity.getCarro();
         apoliceSeguro = entity.getApoliceSeguro();
+        carrinho = entity.isCarrinho();
+        tipoPagamento = entity.getTipoPagamento();
+        statusPagamento = entity.getStatusPagamento();
 
-        DadosAluguel dadosAluguel = new DadosAluguel( dataPedido, dataEntrega, dataDevolucao, valorTotal, motorista, carro, apoliceSeguro );
+        DadosAluguel dadosAluguel = new DadosAluguel( dataPedido, dataEntrega, dataDevolucao, valorTotal, motorista, carro, apoliceSeguro, carrinho, tipoPagamento, statusPagamento );
 
         return dadosAluguel;
     }
@@ -78,6 +89,9 @@ public class AluguelMapperStructImpl implements AluguelMapperStruct {
         Motorista motorista = null;
         Carro carro = null;
         ApoliceSeguro apoliceSeguro = null;
+        boolean carrinho = false;
+        TipoPagamento tipoPagamento = null;
+        StatusPagamento statusPagamento = null;
 
         dataPedido = entity.getDataPedido();
         dataEntrega = entity.getDataEntrega();
@@ -86,8 +100,11 @@ public class AluguelMapperStructImpl implements AluguelMapperStruct {
         motorista = entity.getMotorista();
         carro = entity.getCarro();
         apoliceSeguro = entity.getApoliceSeguro();
+        carrinho = entity.isCarrinho();
+        tipoPagamento = entity.getTipoPagamento();
+        statusPagamento = entity.getStatusPagamento();
 
-        DadosAluguel dadosAluguel = new DadosAluguel( dataPedido, dataEntrega, dataDevolucao, valorTotal, motorista, carro, apoliceSeguro );
+        DadosAluguel dadosAluguel = new DadosAluguel( dataPedido, dataEntrega, dataDevolucao, valorTotal, motorista, carro, apoliceSeguro, carrinho, tipoPagamento, statusPagamento );
 
         return dadosAluguel;
     }
