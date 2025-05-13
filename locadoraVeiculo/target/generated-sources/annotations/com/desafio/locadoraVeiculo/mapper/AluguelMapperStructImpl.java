@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-05-13T11:29:42-0300",
+    date = "2025-05-13T11:56:44-0300",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 24 (Oracle Corporation)"
 )
 @Component
@@ -67,7 +67,7 @@ public class AluguelMapperStructImpl implements AluguelMapperStruct {
         motorista = entity.getMotorista();
         carro = entity.getCarro();
         apoliceSeguro = entity.getApoliceSeguro();
-        carrinho = entity.isCarrinho();
+        carrinho = entity.getCarrinho();
         tipoPagamento = entity.getTipoPagamento();
         statusPagamento = entity.getStatusPagamento();
 
@@ -100,7 +100,7 @@ public class AluguelMapperStructImpl implements AluguelMapperStruct {
         motorista = entity.getMotorista();
         carro = entity.getCarro();
         apoliceSeguro = entity.getApoliceSeguro();
-        carrinho = entity.isCarrinho();
+        carrinho = entity.getCarrinho();
         tipoPagamento = entity.getTipoPagamento();
         statusPagamento = entity.getStatusPagamento();
 

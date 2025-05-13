@@ -43,6 +43,14 @@ public class GlobalExceptionHandler {
                 .body(e.getMessage());
     }
 
+    @ExceptionHandler(AluguelForaDoCarrinhoException.class)
+    public ResponseEntity<String> handleCarrinho(AluguelForaDoCarrinhoException e){
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(e.getMessage());
+    }
+
+
 
 
 }

@@ -4,17 +4,13 @@ import com.desafio.locadoraVeiculo.dto.DadosAluguel;
 import com.desafio.locadoraVeiculo.entidade.Aluguel;
 import com.desafio.locadoraVeiculo.entidade.ApoliceSeguro;
 import com.desafio.locadoraVeiculo.entidade.Carro;
-import com.desafio.locadoraVeiculo.exception.ContratoApoliceException;
-import com.desafio.locadoraVeiculo.exception.DisponibilidadeMotoristaException;
-import com.desafio.locadoraVeiculo.exception.DisponibilidadePorDataException;
-import com.desafio.locadoraVeiculo.exception.VeiculoNaoEncontradoException;
+import com.desafio.locadoraVeiculo.exception.*;
 import com.desafio.locadoraVeiculo.mapper.AluguelMapperStruct;
 import com.desafio.locadoraVeiculo.repository.AluguelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -63,6 +59,20 @@ public class AluguelService {
                 .collect(Collectors.toList());
     }
 
+
+    public DadosAluguel confirmar(Long id) throws AluguelForaDoCarrinhoException {
+        Aluguel aluguel = repository.findById(id).orElseThrow(() -> new VeiculoNaoEncontradoException("Não existe esse ID cadastrado"));
+
+        if (aluguel.getCarrinho() == false){
+            throw new AluguelForaDoCarrinhoException("Aluguel já está fora do carrinho");
+        }
+
+        aluguel.setCarrinho(false);
+        Aluguel aluguelSalvo = repository.save(aluguel);
+        return aluguelMapperStruct.toAluguelDto(aluguelSalvo);
+
+
+    }
 
 
 

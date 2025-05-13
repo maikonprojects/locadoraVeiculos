@@ -129,7 +129,7 @@ public class Aluguel {
         this.apoliceSeguro = apoliceSeguro;
     }
 
-    public boolean isCarrinho() {
+    public boolean getCarrinho() {
         return carrinho;
     }
 

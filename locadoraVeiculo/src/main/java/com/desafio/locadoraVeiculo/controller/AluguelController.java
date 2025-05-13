@@ -2,6 +2,7 @@ package com.desafio.locadoraVeiculo.controller;
 
 import com.desafio.locadoraVeiculo.dto.DadosAluguel;
 import com.desafio.locadoraVeiculo.entidade.Aluguel;
+import com.desafio.locadoraVeiculo.exception.AluguelForaDoCarrinhoException;
 import com.desafio.locadoraVeiculo.exception.ContratoApoliceException;
 import com.desafio.locadoraVeiculo.exception.DisponibilidadeMotoristaException;
 import com.desafio.locadoraVeiculo.exception.DisponibilidadePorDataException;
@@ -31,6 +32,12 @@ public class AluguelController {
     public ResponseEntity<List<DadosAluguel>> listarCarrinhoPorCliente(@PathVariable Long id) {
         return ResponseEntity.status(200).body(service.listar(id));
     }
+
+    @PatchMapping("/pagar/{id}")
+    public ResponseEntity<DadosAluguel> confirmandoAluguel(@PathVariable Long id) throws AluguelForaDoCarrinhoException {
+        return ResponseEntity.status(200).body(service.confirmar(id));
+    }
+
 
 
 
