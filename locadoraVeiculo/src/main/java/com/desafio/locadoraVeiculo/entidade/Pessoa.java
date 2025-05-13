@@ -20,6 +20,8 @@ public class Pessoa {
 
     private String cpf;
 
+    @Enumerated(EnumType.STRING)
+    private Sexo sexo;
 
     private String email;
 
@@ -27,11 +29,20 @@ public class Pessoa {
     }
 
 
-    public Pessoa(String nome, Date dataNascimento, String cpf, String email) {
+    public Pessoa(String cpf, String nome, Date dataNascimento, Sexo sexo, String email) {
+        this.cpf = cpf;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
-        this.cpf = cpf;
+        this.sexo = sexo;
         this.email = email;
+    }
+
+    public Sexo getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(Sexo sexo) {
+        this.sexo = sexo;
     }
 
     public Long getId() {
