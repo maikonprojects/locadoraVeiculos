@@ -20,7 +20,7 @@ public class AluguelController {
     AluguelService service;
 
     @PostMapping("/carrinho")
-    public ResponseEntity<DadosAluguel> alugar(@RequestBody DadosAluguel dados) throws DisponibilidadePorDataException, ContratoApoliceException, DisponibilidadeMotoristaException {
+    public ResponseEntity<DadosAluguel> alugar(@RequestBody DadosAluguel dados) throws DisponibilidadePorDataException, ContratoApoliceException, DisponibilidadeMotoristaException, DataErradaException {
         return ResponseEntity.status(201).body(service.alugarPorData(dados));
 
     }
