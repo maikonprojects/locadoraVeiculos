@@ -50,6 +50,15 @@ public class GlobalExceptionHandler {
                 .body(e.getMessage());
     }
 
+    @ExceptionHandler(AluguelNaoExisteException.class)
+    public ResponseEntity<String> handleAluguel(AluguelNaoExisteException e){
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(e.getMessage());
+    }
+
+
+
 
 
 

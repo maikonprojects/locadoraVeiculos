@@ -38,6 +38,11 @@ public class AluguelController {
         return ResponseEntity.status(200).body(service.confirmar(id));
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<DadosAluguel> atualizarAluguel(@PathVariable Long id, @RequestBody DadosAluguel aluguel) throws DisponibilidadePorDataException, ContratoApoliceException, DisponibilidadeMotoristaException {
+        return ResponseEntity.status(200).body(service.atualizar(id,aluguel));
+    }
+
 
 
 
